@@ -1,0 +1,18 @@
+.filter-roadmap-desktop {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.flex-column {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.desktop {
+  width: 80vw;
+}
+.tablet {
+  width: 90vw;
+}
+.mobile {
+  width: 100vw;
+}

@@ -1,0 +1,44 @@
+.category {
+  display: inline-block;
+  padding: 0.5rem 0.8rem;
+  font-weight: 600;
+  color: #4562de;
+  background-color: #f1f4fc;
+}
+
+.feedback {
+  background-color: #fff;
+  width: 50rem;
+  height: 8rem;
+  margin: 1rem 0;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.upvotes {
+  float: left;
+  width: 3.5rem;
+  text-align: center;
+  border-radius: 1rem;
+  background-color: #f1f4fc;
+}
+.upvotes > img {
+  padding-top: 0.8rem;
+  width: 0.8rem;
+}
+.upvotes > p {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #5d6282;
+  padding-bottom: 1rem;
+}
+.comments-length {
+  float: right;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #5d6282;
+}
+
+.comments-length span {
+  padding-left: 1rem;
+}

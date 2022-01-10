@@ -1,0 +1,37 @@
+header {
+  width: 25%;
+  height: 8rem;
+  color: #fff;
+  text-transform: capitalize;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 0.5rem;
+  padding-left: 1rem;
+}
+header h1 {
+  line-height: 2.5rem;
+  padding-top: 3rem;
+  font-size: 1.4rem;
+}
+
+.desktop {
+  background-image: url("../assets/desktop/background-header.png");
+}
+.tablet {
+  background-image: url("../assets/tablet/background-header.png");
+  width: 33%;
+  height: 12rem;
+}
+.mobile {
+  background-image: url("../assets/mobile/background-header.png");
+  width: 100%;
+  height: 5rem;
+  border-radius: 0;
+}
+.tablet h1 {
+  padding-top: 7rem;
+}
+.mobile h1 {
+  padding-top: 1rem;
+}

@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 5rem;
+  width: 50rem;
+  padding: 1rem;
+  background-color: #363f68;
+  border-radius: 0.5rem;
+}
