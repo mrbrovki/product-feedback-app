@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import styles from '../styles/Filter.module.css'
+import style from '../styles/Filter.module.css'
 
-const Filter = () => {
+const Filter = ({deviceType}) => {
  const [filter, setFilter] = useState({all: true, ui: false, ux: false, enhancements: false, bug: false, feature: false});
   const handleChange = (e) => {
     if(e.target.name === 'All'){
@@ -18,7 +18,7 @@ const Filter = () => {
  </span>);
  return (
   <form>
-   <fieldset>
+   <fieldset className={style.filter + ' ' + style[deviceType]}>
     {filterInputs}
    </fieldset>
   </form>

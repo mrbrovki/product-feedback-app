@@ -4,25 +4,25 @@ import { Context } from '../App'
 import Filter from '../Filter'
 import Roadmap from '../Roadmap'
 import Header from '../Header'
+import FeedbackHeader from '../FeedbackHeader'
 import FeedbackList from '../FeedbackList'
 //styles
 import style from '../../styles/Home.module.css'
-import FeedbackHeader from '../FeedbackHeader'
 
 const Home = () => {
- const {deviceType} = useContext(Context);
+ const {roadmap, deviceType} = useContext(Context);
  return (
-  <body className={style[deviceType]}>
+  <div className={style.home + ' ' + style[deviceType]}>
+   <section className={style['hfr-' + deviceType]}>
     <Header deviceType={deviceType}/>
-   <section className={'filter-roadmap-'+ style[deviceType]}>
-    <Filter />
-    <Roadmap />
+    <Filter deviceType={deviceType}/>
+    <Roadmap deviceType={deviceType} roadmap={roadmap}/>
    </section>
-   <section className={style['flex-column']}>
-    <FeedbackHeader />
+   <section className={style.feedback}>
+    <FeedbackHeader/>
    <FeedbackList />
    </section>
-  </body>
+  </div>
 
  )
 }

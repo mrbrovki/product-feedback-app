@@ -1,7 +1,60 @@
 .roadmap {
-  margin-top: 1rem;
-  width: 25%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
   height: 10rem;
+  padding: 1rem;
   background-color: #fff;
+  margin: 0.5rem;
   border-radius: 0.5rem;
+  font-weight: 400;
+}
+.roadmap h2,
+.roadmap a {
+  line-height: 2rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.roadmap a {
+  float: right;
+  color: #4661e6;
+  font-weight: 700;
+}
+
+.dot {
+  float: left;
+}
+.roadmap p {
+  color: #647196;
+  font-size: 1.2rem;
+}
+
+.roadmap li {
+  margin-left: -2.4rem;
+}
+
+.dot {
+  margin-top: 0.2rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.planned .dot {
+  background-color: #f49f85;
+}
+.in-progress .dot {
+  background-color: #ad1fea;
+}
+.live .dot {
+  background-color: #62bcfa;
+}
+
+.amount {
+  color: #647196;
+  font-weight: 700;
+  font-size: 1.2rem;
+  float: right;
+  clear: both;
 }

@@ -1,18 +1,33 @@
-.filter-roadmap-desktop {
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-.flex-column {
-  display: flex;
-  flex-flow: column nowrap;
+.home {
+  width: 100vw;
+  background-color: #f7f8fd;
 }
 .desktop {
-  width: 80vw;
+  padding: 8vw 10vw;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 .tablet {
-  width: 90vw;
+  padding: 3rem 2rem;
 }
 .mobile {
-  width: 100vw;
+  padding: 0rem;
+}
+.hfr-desktop {
+  width: 25%;
+  display: grid;
+  grid-template-areas: 1fr;
+}
+.hfr-tablet {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.desktop .feedback {
+  width: calc(75% - 1rem);
+}
+.tablet .feedback,
+.mobile .feedback {
+  width: 100%;
 }
