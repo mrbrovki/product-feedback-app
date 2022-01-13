@@ -6,4 +6,13 @@
   padding: 1rem;
   background-color: #363f68;
   border-radius: 0.5rem;
+  color: #fff;
+}
+.desktop h2,
+.tablet h2 {
+  margin-left: 1rem;
+}
+.mobile img,
+.mobile h2 {
+  display: none;
 }

@@ -1,14 +1,13 @@
 import React, {useState} from 'react'
 import style from '../styles/Filter.module.css'
 
-const Filter = ({deviceType}) => {
- const [filter, setFilter] = useState({all: true, ui: false, ux: false, enhancements: false, bug: false, feature: false});
+const Filter = ({filter, dispatch, deviceType}) => {
   const handleChange = (e) => {
     if(e.target.name === 'All'){
-      setFilter({all: true, ui: false, ux: false, enhancements: false, bug: false, feature: false});
+      dispatch({type: 'FILTER', value: {all: true}});
     }
     else{
-      setFilter({...filter, all: false, [e.target.name.toLowerCase()]: e.target.checked});
+      dispatch({type: 'FILTER', value: {all: false, [e.target.name.toLowerCase()]: e.target.checked}});
     }
   };
  const filterInputs = ['All','UI', 'UX', 'Enhancements', 'Bug', 'Feature'].map((el, index) => 

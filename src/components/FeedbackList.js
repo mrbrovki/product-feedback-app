@@ -3,17 +3,18 @@ import Feedback from './Feedback'
 import style from '../styles/FeedbackList.module.css'   
 import { Context } from './App'
 const FeedbackList = () => {
- const {setRoadmap,status, data, feedbacks, setFeedbacks} = useContext(Context);
+ const {dispatch, data, state: {feedbacks}, status} = useContext(Context);
 
  useEffect(()=>{
   if(status === 'fetched'){
-   setFeedbacks(data.productRequests.map((el, index) => {
-    setRoadmap(prev => {return {...prev, [el.status]: prev[el.status] + 1 }});
-   return(<Feedback data={el} key={index}/>);
-   }
-   ))
-  }
- }, [status]);
+    const fbComp = data.productRequests.map((el, index) => {
+    dispatch({type: 'ROADMAP', value: el.status});
+    return(
+     <Feedback data={el} key={index}/>
+    );
+   })
+   dispatch({type: 'FEEDBACKS', value: fbComp});
+  }}, [status]);
  return (
   <section className={style['feedback-list']}>
    {feedbacks}

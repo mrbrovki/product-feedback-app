@@ -1,6 +1,5 @@
 .home {
   width: 100vw;
-  background-color: #f7f8fd;
 }
 .desktop {
   padding: 8vw 10vw;
@@ -19,10 +18,14 @@
   width: 25%;
   display: grid;
   grid-template-areas: 1fr;
+  grid-gap: 1rem;
 }
 .hfr-tablet {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  margin-bottom: 1rem;
 }
 .desktop .feedback {
   width: calc(75% - 1rem);

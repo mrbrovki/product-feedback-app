@@ -10,16 +10,16 @@ import FeedbackList from '../FeedbackList'
 import style from '../../styles/Home.module.css'
 
 const Home = () => {
- const {roadmap, deviceType} = useContext(Context);
+ const {state: {deviceType, filter, roadmap}, dispatch} = useContext(Context);
  return (
   <div className={style.home + ' ' + style[deviceType]}>
    <section className={style['hfr-' + deviceType]}>
     <Header deviceType={deviceType}/>
-    <Filter deviceType={deviceType}/>
+    <Filter deviceType={deviceType} filter={filter} dispatch={dispatch}/>
     <Roadmap deviceType={deviceType} roadmap={roadmap}/>
    </section>
    <section className={style.feedback}>
-    <FeedbackHeader/>
+    <FeedbackHeader deviceType={deviceType} roadmap={roadmap}/>
    <FeedbackList />
    </section>
   </div>

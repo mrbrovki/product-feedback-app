@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from 'react';
+import React, {createContext, useReducer, useEffect} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {useFetch} from './useFetch';
 //pages
@@ -13,32 +13,56 @@ import '../styles/App.css';
 
 export const Context = createContext();
 
-function App() {
+const App = () => {
   const inProgress = 'in-progress';
-  const [size, setSize] = useState(window.innerWidth);
-  const [deviceType, setDeviceType] = useState('desktop');
-  const [feedbacks, setFeedbacks] = useState();
-  const [roadmap, setRoadmap] = useState({planned: 0, [inProgress]: 0, live: 0, suggestion: 0});
-  const {status, data} = useFetch('./data.json');
+  const initialState = {
+    size: window.innerWidth,
+    deviceType: 'desktop',
+    sort: 'most upvotes',
+    roadmap: {planned: 0, [inProgress]: 0, live: 0, suggestion: 0},
+    filter: {all: true, ui: false, ux: false, enhancements: false, bug: false, feature: false},
+    feedbacks: null
+  };
+  const reducer = (state, action) =>{
+    switch(action.type){
+      case 'SIZE':
+      case 'SORT':
+      case 'FEEDBACKS':
+        return {...state, [action.type.toLowerCase()]: action.value};
+      case 'DEVICETYPE':
+        return {...state, deviceType: action.value};
+      case 'ROADMAP':
+      return {...state, roadmap:{...state.roadmap, [action.value]: state.roadmap[action.value] + 1}}
+      case 'FILTER':
+      return {...state, filter: {...state.filter, ...action.value}}
 
-  const checkSize = () =>{
-    if(size > 1024){
-      setDeviceType('desktop');
-        } 
-    else if(size >= 768){
-      setDeviceType('tablet');
-    }
-    else{
-      setDeviceType('mobile');
     }
   }
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  //fetching data
+  const {status, data} = useFetch('./data.json');
+  //responsive page
+  const changeSize = () => dispatch({type: 'SIZE', value: window.innerWidth});
+
+  const checkSize = () =>{
+    if(state.size >= 1024){
+      dispatch({type: 'DEVICETYPE', value: 'desktop'});
+        } 
+    else if(state.size >= 768){
+      dispatch({type: 'DEVICETYPE', value: 'tablet'});
+    }
+    else{
+      dispatch({type: 'DEVICETYPE', value: 'mobile'});
+    }
+  };
   useEffect(()=>{
-    window.addEventListener('resize',() => setSize(window.innerWidth));
+    window.addEventListener('resize', changeSize);
     checkSize();
-    return () => window.addEventListener('resize',() => setSize(window.innerWidth));
-  },);
+    return ()=> window.removeEventListener('resize', changeSize);
+  }, [window.innerWidth]);
   return (
-    <Context.Provider value={{roadmap, setRoadmap, status, data, feedbacks, setFeedbacks,deviceType}}>
+    <Context.Provider value={{state, dispatch, status, data}}>
       <BrowserRouter>
         <Routes>
         <Route path='/' element={<Layout />}>

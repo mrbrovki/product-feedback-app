@@ -7,7 +7,6 @@ header {
   background-repeat: no-repeat;
   border-radius: 0.5rem;
   padding-left: 1rem;
-  margin: 0.5rem;
 }
 header h1 {
   line-height: 2.5rem;
@@ -23,12 +22,12 @@ header p {
 .tablet {
   background-image: url("../assets/tablet/background-header.png");
   height: 10rem;
+  margin: 0;
 }
 .mobile {
   background-image: url("../assets/mobile/background-header.png");
   height: 5rem;
   border-radius: 0;
-  margin: 0rem;
 }
 .desktop h1 {
   padding-top: 5rem;
